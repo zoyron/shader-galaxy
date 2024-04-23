@@ -4,7 +4,6 @@ import GUI from "lil-gui";
 import galaxyVertexShader from "./shaders/galaxy/vertex.glsl";
 import galaxyFragmentShader from "./shaders/galaxy/fragment.glsl";
 
-
 /**
  * Base
  */

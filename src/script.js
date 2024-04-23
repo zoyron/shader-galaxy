@@ -9,6 +9,7 @@ import galaxyFragmentShader from "./shaders/galaxy/fragment.glsl";
  */
 // Debug
 const gui = new GUI();
+gui.close();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -102,6 +103,9 @@ const generateGalaxy = () => {
     vertexColors: true,
     vertexShader: galaxyVertexShader,
     fragmentShader: galaxyFragmentShader,
+    uniforms: {
+      uSize: {value: 2}
+    }
   });
 
   /**

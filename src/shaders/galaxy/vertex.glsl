@@ -1,8 +1,18 @@
+uniform float uTime;
 uniform float uSize;
 attribute float aScale;
+varying vec3 vColor;
 
 void main() {
   vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+  // spin
+  float angle = atan(modelPosition.x, modelPosition.z);
+  float distanceToCenter = length(modelPosition.xz);
+  float offSetAngle = (1.0 / distanceToCenter) * uTime * 0.5;
+  angle += offSetAngle;
+  modelPosition.x = cos(angle) * distanceToCenter;
+  modelPosition.z = sin(angle) * distanceToCenter;
+
   vec4 viewPosition = viewMatrix * modelPosition;
   vec4 projectedPosition = projectionMatrix * viewPosition;
   gl_Position = projectedPosition;
@@ -12,4 +22,7 @@ void main() {
   
   // applying the particle attenuation formula
   gl_PointSize *= (1.0 / - viewPosition.z);
+
+  // varying color
+  vColor = color;
 }

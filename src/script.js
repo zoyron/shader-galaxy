@@ -104,6 +104,7 @@ const generateGalaxy = () => {
   geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
   geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
   geometry.setAttribute("aScale", new THREE.BufferAttribute(scales, 1)); // passing the newly created attribute to the vertex shader
+  geometry.setAttribute("aRandom", new THREE.BufferAttribute(randomness, 3)); // passing the newly created attribute to the vertex shader
 
   /**
    * Material

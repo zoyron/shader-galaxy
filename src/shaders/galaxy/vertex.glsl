@@ -1,6 +1,7 @@
 uniform float uTime;
 uniform float uSize;
 attribute float aScale;
+attribute vec3 aRandom;
 varying vec3 vColor;
 
 void main() {
@@ -12,6 +13,9 @@ void main() {
   angle += offSetAngle;
   modelPosition.x = cos(angle) * distanceToCenter;
   modelPosition.z = sin(angle) * distanceToCenter;
+
+  // adding randomness to the galaxy
+  modelPosition.xyz += aRandom;
 
   vec4 viewPosition = viewMatrix * modelPosition;
   vec4 projectedPosition = projectionMatrix * viewPosition;
